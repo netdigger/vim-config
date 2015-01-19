@@ -15,6 +15,9 @@ Plugin 'gmarik/Vundle.vim'
 "Plugin 'vim-scripts/taglist.vim'
 "Plugin 'vim-scripts/winmanager'
 Plugin 'vim-scripts/minibufexplorerpp'
+"Plugin 'vim-scripts/SuperTab'
+
+" Other common plugin
 Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/nerdtree'
 
@@ -59,7 +62,8 @@ set cindent          " Using the indent format of C/C++
 set cinoptions={0,1s,t0,n-2,p2s,(03s,=.5s,>1s,=1s,:1s     " set the style of C/C++ indent format.
 set showmatch        " 
 set linebreak        " 
-
+" Auto completed
+imap <F4> <C-x><C-o>
 "minibufexplorer
 let g:miniBufExplMapWindowNavVim = 1 "按下Ctrl+h/j/k/l，可以切换到当前窗口的上下左右窗口
 let g:miniBufExplMapWindowNavArrows = 1 "按下Ctrl+箭头，可以切换到当前窗口的上下左右窗口
@@ -82,13 +86,14 @@ let g:miniBufExplModSelTarget = 1    "  不要在不可编辑内容的窗口（�
 "let Tlist_Process_File_Always=1 "实时更新tags 是否一直处理tags.1:处理;0:不处理
 "let Tlist_Inc_Winwidth=0
 
+"NERDTree
+nmap <F2> :NERDTreeToggle<CR>
+let g:NERDTreeWinSize=35
+
 "Tagbar
 let g:tagbar_width = 35 "设置宽度
 nmap <F3> :TagbarToggle<CR>
 
-"NERDTree
-nmap <F2> :NERDTreeToggle<CR>
-let g:NERDTreeWinSize=35
 
 " QuickFix setting --
 " 按下F6，执行make clean
