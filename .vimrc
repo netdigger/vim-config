@@ -56,10 +56,9 @@ set autowrite        " AutoSave the modified file.
 set autoindent       " It is used 'set noautoindent' to cancel the auto indent.
 set number           " Enable line number
 set tabstop=4        " Tab stop
+set shiftwidth=4
 set noexpandtab
 set softtabstop=4    " soft tab stop 
-set cindent          " Using the indent format of C/C++ 
-set cinoptions={0,1s,t0,n-2,p2s,(03s,=.5s,>1s,=1s,:1s     " set the style of C/C++ indent format.
 set showmatch        " 
 set linebreak        " 
 " Auto completed
@@ -112,6 +111,10 @@ imap <F7> <ESC>:make<CR><CR><CR> :copen<CR><CR>
 imap <F8> <ESC>:cp<CR>
 imap <F9> <ESC>:cn<CR>
 imap <F12> <ESC>:make test<CR><CR><CR> :copen<CR><CR>
+"C++
+"set cindent          " Using the indent format of C/C++ 
+"set cinoptions={0,1s,t0,n-2,p2s,(03s,=.5s,>1s,=1s,:1s     " set the style of C/C++ indent format.
+
 "
 "Python
 autocmd FileType python setlocal et sta sw=4 sts=4
