@@ -9,7 +9,7 @@ The vim config for IDE of C/C++ python golang
     
 ##install vim-config
 
-" wget https://github.com/netdigger/vim-config/raw/master/.vimrc ~/
+    wget https://github.com/netdigger/vim-config/raw/master/.vimrc ~/
 
 #install plugins
 Start vim, and run:
