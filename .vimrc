@@ -1,7 +1,12 @@
+"User Manual
+"Install Vundle
+" git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+" wget https://github.com/netdigger/vim-config/raw/master/.vimrc ~/
+" Start vim
+" Run :BundleInstall
 set nocompatible              " be iMproved, required
 filetype off                  " required
-" Install Vundle
-" git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
