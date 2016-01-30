@@ -20,3 +20,4 @@ The vim config for IDE of C/C++ python golang
 Start vim, and run:
 
     :BundleInstall
+    :GoInstallBinaries
