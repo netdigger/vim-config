@@ -126,3 +126,4 @@ autocmd FileType python setlocal et sta sw=4 sts=4
 
 "Go
 autocmd FileType go map <F7>:shell go build <CR><CR><CR> :copen<CR><CR>
+let g:go_fmt_command = "goimports"   "replace gofmt by goimports
