@@ -14,7 +14,7 @@ The vim config for IDE of C/C++ python golang
     
 ##install vim-config
 
-    wget https://github.com/netdigger/vim-config/raw/master/.vimrc ~/
+    wget https://raw.githubusercontent.com/netdigger/vim-config/master/.vimrc ~/
 
 #install plugins
 Start vim, and run:
