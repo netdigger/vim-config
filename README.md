@@ -3,26 +3,27 @@ The vim config for IDE of C/C++ python golang
 
 #user manual
 
-##install ctags
-###Linux
-    sudo apt-get install exuberant-ctags
+## install ctags
+### Linux
+    sudo apt install exuberant-ctags
 ### Mac Os
     
-##Install Vundle
+## Install Vundle
 
     git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
     
-##install vim-config
+## install vim-config
 
     wget https://raw.githubusercontent.com/netdigger/vim-config/master/.vimrc ~/
 
-#install plugins
+# install plugins
 if you can access https://golang.org, you can do that:
 Start vim, and run:
 
     :BundleInstall
     :GoInstallBinaries
 
+## For users behind GFW
 if you can't access the site, you should do follow these steps:
 
 start vim, and run command in vim:
