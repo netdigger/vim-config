@@ -35,6 +35,9 @@ Plugin 'nsf/gocode', {'rtp': 'vim/'}
 " C++ plugins
 Plugin 'vim-scripts/OmniCppComplete'
 
+" Octave plugins
+Plugin 'netdigger/vim-octave'
+
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
@@ -127,3 +130,8 @@ autocmd FileType python setlocal et sta sw=4 sts=4
 "Go
 autocmd FileType go map <F7>:shell go build <CR><CR><CR> :copen<CR><CR>
 let g:go_fmt_command = "goimports"   "replace gofmt by goimports
+
+"Octave
+augroup filetypedetect
+  au! BufRead,BufNewFile *.m,*.oct set filetype=octave
+augroup END
