@@ -17,10 +17,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " vim standard plugin
-"Plugin 'vim-scripts/taglist.vim'
-"Plugin 'vim-scripts/winmanager'
 Plugin 'vim-scripts/minibufexplorerpp'
-"Plugin 'vim-scripts/SuperTab'
 
 " Other common plugin
 Plugin 'majutsushi/tagbar'
@@ -28,15 +25,13 @@ Plugin 'scrooloose/nerdtree'
 
 " go plugins
 Plugin 'fatih/vim-go'
-"gocode install by next command:
-"go get -u github.com/nsf/gocode
 Plugin 'nsf/gocode', {'rtp': 'vim/'}
-
-" C++ plugins
-Plugin 'vim-scripts/OmniCppComplete'
 
 " Octave plugins
 Plugin 'netdigger/vim-octave'
+
+" YouCompleteMe
+Plugin 'Valloric/YouCompleteMe'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
@@ -70,6 +65,9 @@ set softtabstop=4    " soft tab stop
 set showmatch        " 
 set linebreak        " 
 
+highlight PMenu ctermfg=white  ctermbg=darkgray
+highlight PMenuSel ctermfg=white ctermbg=darkgreen
+
 "minibufexplorer
 "按下Ctrl+h/j/k/l，可以切换到当前窗口的上下左右窗口
 let g:miniBufExplMapWindowNavVim = 1 
@@ -94,8 +92,10 @@ let g:NERDTreeWinSize=35
 let g:tagbar_width = 35 "设置宽度
 nmap <F3> :TagbarToggle<CR>
 
-" Auto completed
-imap <F4> <C-x><C-o>
+"YouCompleteMe
+set completeopt=menu,menuone
+" Close the preview window
+let g:ycm_add_preview_to_completeopt = 0
 
 " QuickFix setting --
 " 按下F6，执行make clean
@@ -127,7 +127,7 @@ autocmd FileType python setlocal et sta sw=4 sts=4
 autocmd FileType go map <F7>:shell go build <CR><CR><CR> :copen<CR><CR>
 let g:go_fmt_command = "goimports"   "replace gofmt by goimports
 
-"Octave and MATLAB 
+"Octave and metlab
 augroup filetypedetect
   au! BufRead,BufNewFile *.m,*.oct set filetype=octave
 augroup END

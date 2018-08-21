@@ -23,6 +23,10 @@ Start vim, and run:
     :BundleInstall
     :GoInstallBinaries
 
+## intall YouComplete me
+
+Please refer the [Install Guide](https://github.com/Valloric/YouCompleteMe)
+
 ## For users behind GFW
 if you can't access the site, you should do follow these steps:
 
