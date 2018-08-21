@@ -27,7 +27,10 @@ Start vim, and run:
 
 Please refer the [Install Guide](https://github.com/Valloric/YouCompleteMe)
 
-## For users behind GFW
+if you want change the color of auto complete menu, please refer the web page:
+[Colors](https://jonasjacek.github.io/colors/)
+
+# For users behind GFW
 if you can't access the site, you should do follow these steps:
 
 start vim, and run command in vim:
