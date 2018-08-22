@@ -8,9 +8,10 @@ The vim config for IDE of C/C++ python golang
     sudo apt install exuberant-ctags
 ### Mac Os
     
-## Install Vundle
+## Install vim-plug 
 
-    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     
 ## install vim-config
 
@@ -25,12 +26,17 @@ The vim config for IDE of C/C++ python golang
 if you can access https://golang.org, you can do that:
 Start vim, and run:
 
-    :BundleInstall
-    :GoInstallBinaries
+    :PlugInstall
 
 ## intall YouComplete me
 
-Please refer the [Install Guide](https://github.com/Valloric/YouCompleteMe)
+	sudo apt install build-essential cmake
+	sudo apt install python-dev python3-dev
+	cd ~/.vim/bundle/YouCompleteMe
+	./install.py --clang-completer --go-completer
+
+Please refer the [Install Guide](https://github.com/Valloric/YouCompleteMe) for
+detail information
 
 if you want change the color of auto complete menu, please refer the web page:
 [Colors](https://jonasjacek.github.io/colors/)
