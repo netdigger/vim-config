@@ -33,6 +33,9 @@ Plugin 'netdigger/vim-octave'
 " YouCompleteMe
 Plugin 'Valloric/YouCompleteMe'
 
+" Powerline
+Plugin 'powerline/powerline'
+
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
@@ -96,6 +99,10 @@ nmap <F3> :TagbarToggle<CR>
 set completeopt=menu,menuone
 " Close the preview window
 let g:ycm_add_preview_to_completeopt = 0
+let g:ycm_python_binary_path = 'python'
+
+"Powerline
+set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
 
 " QuickFix setting --
 " 按下F6，执行make clean

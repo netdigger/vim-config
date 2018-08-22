@@ -16,6 +16,11 @@ The vim config for IDE of C/C++ python golang
 
     wget https://raw.githubusercontent.com/netdigger/vim-config/master/.vimrc ~/
 
+## Insall fonts of powerline
+
+	sudo apt install fonts-powerline
+	pip install powerline-status
+
 # install plugins
 if you can access https://golang.org, you can do that:
 Start vim, and run:
