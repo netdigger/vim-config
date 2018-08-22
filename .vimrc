@@ -34,7 +34,14 @@ Plugin 'netdigger/vim-octave'
 Plugin 'Valloric/YouCompleteMe'
 
 " Powerline
-Plugin 'powerline/powerline'
+"Plugin 'powerline/powerline'
+
+"Air line
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
+"Git
+Plugin 'tpope/vim-fugitive'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
@@ -67,6 +74,7 @@ set noexpandtab
 set softtabstop=4    " soft tab stop 
 set showmatch        " 
 set linebreak        " 
+set laststatus=2
 
 highlight PMenu ctermfg=white  ctermbg=darkgray
 highlight PMenuSel ctermfg=white ctermbg=darkgreen
@@ -102,7 +110,13 @@ let g:ycm_add_preview_to_completeopt = 0
 let g:ycm_python_binary_path = 'python'
 
 "Powerline
-set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
+"set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
+
+"Air line
+let g:airline_powerline_fonts = 1
+let g:airline_theme='dark'
+let g:airline_solarized_bg='dark'
+let g:airline#extensions#branch#enabled = 1
 
 " QuickFix setting --
 " 按下F6，执行make clean
