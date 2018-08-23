@@ -18,6 +18,7 @@ Plug 'ludovicchabant/vim-gutentags'
 Plug 'w0rp/ale'
 Plug 'Shougo/echodoc.vim'
 Plug 'Yggdroot/LeaderF', {'do':'./install.sh'}
+Plug 'skywind3000/asyncrun.vim'
 
 " Initialize plugin system
 call plug#end()
@@ -56,6 +57,10 @@ noremap <c-j> <c-w><c-j>
 noremap <c-k> <c-w><c-k>
 noremap <c-l> <c-w><c-l>
 
+" AsyncRun
+let g:asyncrun_open = 6
+let g:asyncrun_bell = 1
+
 " Gutentags
 " gutentags 搜索工程目录的标志，碰到这些文件/目录名就停止向上一级目录递归
 let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
@@ -81,23 +86,22 @@ endif
 let g:ale_completion_delay = 500
 let g:ale_echo_delay = 20
 let g:ale_echo_msg_format = '[%severity%] %code: %%s [%linter%] '
-"let g:ale_echo_msg_format = '[%linter%] %code: %%s'
 let g:ale_lint_delay = 500
 let g:ale_lint_on_text_changed = 'normal'
 let g:ale_lint_on_insert_leave = 1
 "let g:ale_linters_explicit = 1
 let g:airline#extensions#ale#enabled = 1
 let g:ale_statusline_format = ['✗•%d', '⚡•%d', '✔ OK']
-
-let g:ale_c_gcc_options = '-Wall -Wextra -O2 -std=c99'
-let g:ale_cpp_gcc_options = '-Wall -Wextra -O2 -std=c++14'
+"let g:ale_linters = {'python': []}
+let g:ale_c_gcc_options = '-Wall -Wextra -O0 -std=c99'
+let g:ale_cpp_gcc_options = '-Wall -Wextra -O0 -std=c++14'
 let g:ale_c_cppcheck_options = ''
 let g:ale_cpp_cppcheck_options = ''
 "let g:ale_open_list = 1 
-let g:ale_set_quickfix = 1 
-let g:ale_set_highlights = 1 
+let g:ale_set_quickfix = 0 
+let g:ale_set_highlights = 0 
 let g:ale_set_signs = 1 
-let g:ale_sign_column_always = 1
+let g:ale_sign_column_always = 0 
 let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '⚡'
 let g:ale_echo_msg_error_str = '✗'
@@ -146,6 +150,7 @@ set completeopt=menu,menuone
 " Close the preview window
 let g:ycm_add_preview_to_completeopt = 0
 let g:ycm_python_binary_path = 'python'
+let g:ycm_global_ycm_extra_conf='~/.vim/plugged/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
 
 "Air line
 let g:airline_powerline_fonts = 1
@@ -168,10 +173,10 @@ set cindent          " Using the indent format of C/C++
 " set the style of C/C++ indent format.
 set cinoptions={0,1s,t0,n-2,p2s,(03s,=.5s,>1s,=1s,:1s     
 autocmd FileType c,cpp noremap <F6> :make clean<CR>
-autocmd FileType c,cpp noremap <F7> :make<CR>copen<CR>
+autocmd FileType c,cpp noremap <F7> :AsyncRun make<CR>copen<CR>
 autocmd FileType c,cpp noremap <F11> :make test<CR> :copen<CR>
 autocmd FileType c,cpp inoremap <F6> <ESC>:make clean<CR>
-autocmd FileType c,cpp inoremap <F7> <ESC>:make<CR> :copen<CR>
+autocmd FileType c,cpp inoremap <F7> <ESC>:AsyncRun make<CR> :copen<CR>
 autocmd FileType c,cpp inoremap <F11> <ESC>:make test<CR>:copen<CR>
 
 "Python
