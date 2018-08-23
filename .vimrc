@@ -1,11 +1,10 @@
 "User Manual
-"set nocompatible              " be iMproved, required
+set nocompatible              " be iMproved, required
 "filetype off                  " required
 
 "Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
 
-"Plug 'vim-scripts/minibufexplorerpp'
 Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdtree'
 Plug 'fatih/vim-go', {'do': ':GoUpdateBinaries'}
@@ -27,6 +26,7 @@ call plug#end()
 "Common setting
 syntax on            " On the syntax color
 filetype on
+filetype indent on
 filetype plugin indent on    " required
 colorscheme ron      " elflord ron peachpuff default 
 set autowrite        " AutoSave the modified file.
@@ -51,6 +51,10 @@ highlight PMenuSel ctermfg=white ctermbg=darkgreen
 set tags=./.tags;,.tags
 
 noremap <c-d> :sh<cr>
+noremap <c-h> <c-w><c-h>
+noremap <c-j> <c-w><c-j>
+noremap <c-k> <c-w><c-k>
+noremap <c-l> <c-w><c-l>
 
 " Gutentags
 " gutentags 搜索工程目录的标志，碰到这些文件/目录名就停止向上一级目录递归
@@ -74,21 +78,30 @@ if !isdirectory(s:vim_tags)
 endif
 
 "ALE
-let g:ale_linters_explicit = 1
 let g:ale_completion_delay = 500
 let g:ale_echo_delay = 20
+let g:ale_echo_msg_format = '[%severity%] %code: %%s [%linter%] '
+"let g:ale_echo_msg_format = '[%linter%] %code: %%s'
 let g:ale_lint_delay = 500
-let g:ale_echo_msg_format = '[%linter%] %code: %%s'
 let g:ale_lint_on_text_changed = 'normal'
 let g:ale_lint_on_insert_leave = 1
+"let g:ale_linters_explicit = 1
 let g:airline#extensions#ale#enabled = 1
+let g:ale_statusline_format = ['✗•%d', '⚡•%d', '✔ OK']
 
-let g:ale_c_gcc_options = '-Wall -O2 -std=c99'
-let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++14'
+let g:ale_c_gcc_options = '-Wall -Wextra -O2 -std=c99'
+let g:ale_cpp_gcc_options = '-Wall -Wextra -O2 -std=c++14'
 let g:ale_c_cppcheck_options = ''
 let g:ale_cpp_cppcheck_options = ''
-
-let g:ale_sign_error = "\ue009\ue009"
+"let g:ale_open_list = 1 
+let g:ale_set_quickfix = 1 
+let g:ale_set_highlights = 1 
+let g:ale_set_signs = 1 
+let g:ale_sign_column_always = 1
+let g:ale_sign_error = '✗'
+let g:ale_sign_warning = '⚡'
+let g:ale_echo_msg_error_str = '✗'
+let g:ale_echo_msg_warning_str = '⚡'
 hi! clear SpellBad
 hi! clear SpellCap
 hi! clear SpellRare
@@ -119,13 +132,6 @@ let g:Lf_ShowRelativePath = 0
 let g:Lf_HideHelp = 1
 let g:Lf_StlColorscheme = 'powerline'
 let g:Lf_PreviewResult = {'Function':0, 'BufTag':0}
-
-"minibufexplorer
-"let g:miniBufExplMapWindowNavVim = 1 
-"let g:miniBufExplMapWindowNavArrows = 1 
-"let g:miniBufExplMapCTabSwitchBufs = 1  
-"let g:miniBufExplMapCTabSwitchWindows = 1 
-"let g:miniBufExplModSelTarget = 1    
 
 "NERDTree
 nmap <F2> :NERDTreeToggle<CR>
