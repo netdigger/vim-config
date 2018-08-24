@@ -98,18 +98,24 @@ let g:ale_cpp_cppcheck_options = ''
 "let g:ale_open_list = 1 
 let g:ale_set_quickfix = 0 
 let g:ale_set_highlights = 0 
-let g:ale_set_signs = 1 
+let g:ale_set_signs = 1  
 let g:ale_sign_column_always = 1 
 let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '⚡'
 let g:ale_echo_msg_error_str = '✗'
 let g:ale_echo_msg_warning_str = '⚡'
-hi! clear SpellBad
-hi! clear SpellCap
-hi! clear SpellRare
-hi! SpellBad gui=undercurl guisp=red
-hi! SpellCap gui=undercurl guisp=blue
-hi! SpellRare gui=undercurl guisp=magenta
+hi clear SpellBad
+hi clear SpellCap
+hi clear SpellRare
+hi SpellBad gui=undercurl guisp=red
+hi SpellCap gui=undercurl guisp=blue
+hi SpellRare gui=undercurl guisp=magenta
+hi clear SignColumn
+hi ALEErrorSign guibg=darkgray ctermfg=red
+hi ALEWarningSign guibg=darkgray ctermfg = yellow
+let g:ale_c_parse_compile_commands = 1
+let g:ale_c_build_dir_names = ['build', 'release', 'debug']
+let g:ale_linters = {'cpp': ['clang']}
 
 " LeaderF
 noremap <c-p><c-o> :LeaderfFile<cr>
@@ -146,6 +152,8 @@ set completeopt=menu,menuone
 let g:ycm_add_preview_to_completeopt = 0
 let g:ycm_python_binary_path = 'python'
 let g:ycm_global_ycm_extra_conf='~/.vim/plugged/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
+let g:ycm_enable_diagnostic_signs = 0
+let g:ycm_enable_diagnostic_highlighting = 0
 
 "Air line
 let g:airline_powerline_fonts = 1
