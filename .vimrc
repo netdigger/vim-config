@@ -23,7 +23,6 @@ Plug 'skywind3000/asyncrun.vim'
 " Initialize plugin system
 call plug#end()
 
-
 "Common setting
 syntax on            " On the syntax color
 filetype on
@@ -36,7 +35,7 @@ set number           " Enable line number
 set tabstop=4        " Tab stop
 set shiftwidth=4
 set noshowmode		 " Close Show mode
-set noexpandtab
+set expandtab
 set softtabstop=4    " soft tab stop 
 set showmatch        " 
 set linebreak        " 
@@ -92,7 +91,6 @@ let g:ale_lint_on_insert_leave = 1
 "let g:ale_linters_explicit = 1
 let g:airline#extensions#ale#enabled = 1
 let g:ale_statusline_format = ['✗•%d', '⚡•%d', '✔ OK']
-"let g:ale_linters = {'python': []}
 let g:ale_c_gcc_options = '-Wall -Wextra -O0 -std=c99'
 let g:ale_cpp_gcc_options = '-Wall -Wextra -O0 -std=c++14'
 let g:ale_c_cppcheck_options = ''
@@ -101,7 +99,7 @@ let g:ale_cpp_cppcheck_options = ''
 let g:ale_set_quickfix = 0 
 let g:ale_set_highlights = 0 
 let g:ale_set_signs = 1 
-let g:ale_sign_column_always = 0 
+let g:ale_sign_column_always = 1 
 let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '⚡'
 let g:ale_echo_msg_error_str = '✗'
@@ -114,15 +112,12 @@ hi! SpellCap gui=undercurl guisp=blue
 hi! SpellRare gui=undercurl guisp=magenta
 
 " LeaderF
-"let g:Lf_ShortcutF = '<c-p>'
-"let g:Lf_ShortcutB = '<m-n>'
 noremap <c-p><c-o> :LeaderfFile<cr>
 noremap <c-p><c-i> :LeaderfMru<cr>
 noremap <c-p><c-n> :LeaderfFunction!<cr>
 noremap <c-p><c-m> :LeaderfBuffer<cr>
 noremap <c-p><c-u> :LeaderfTag<cr>
 let g:Lf_StlSeparator = { 'left': '', 'right': '', 'font': ''}
-
 let g:Lf_MruFileExclude = ['*.so', '*.a', '*.bin', '*.out']
 let g:Lf_WildIgnore = {
 			\ 'dir': ['.svn','.git','.hg'],
@@ -138,12 +133,12 @@ let g:Lf_StlColorscheme = 'powerline'
 let g:Lf_PreviewResult = {'Function':0, 'BufTag':0}
 
 "NERDTree
-nmap <F2> :NERDTreeToggle<CR>
+noremap <F2> :NERDTreeToggle<CR>
 let g:NERDTreeWinSize=35
 
 "Tagbar
 let g:tagbar_width = 35 "设置宽度
-nmap <F3> :TagbarToggle<CR>
+noremap <F3> :TagbarToggle<CR>
 
 "YouCompleteMe
 set completeopt=menu,menuone
@@ -157,6 +152,10 @@ let g:airline_powerline_fonts = 1
 let g:airline_theme='dark'
 let g:airline_solarized_bg='dark'
 let g:airline#extensions#branch#enabled = 1
+
+" EchoDoc
+set cmdheight=2
+let g:echodoc_enable_at_startup = 1
 
 " QuickFix setting --
 " C++
