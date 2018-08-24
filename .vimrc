@@ -14,7 +14,8 @@ Plug 'Valloric/YouCompleteMe'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive' "git
-Plug 'ludovicchabant/vim-gutentags'
+Plug 'mhinz/vim-signify' "git
+Plug 'ludovicchabant/vim-gutentags' "ctags
 Plug 'w0rp/ale'
 Plug 'Shougo/echodoc.vim'
 Plug 'Yggdroot/LeaderF', {'do':'./install.sh'}
@@ -55,6 +56,23 @@ noremap <c-h> <c-w><c-h>
 noremap <c-j> <c-w><c-j>
 noremap <c-k> <c-w><c-k>
 noremap <c-l> <c-w><c-l>
+" Reindent
+noremap <leader>i gg=G 
+
+"Signify
+let g:signify_sign_add               = '+'
+let g:signify_sign_delete            = '-'
+let g:signify_sign_delete_first_line = '-'
+let g:signify_sign_change            = '~'
+noremap <leader>d :SignifyDiff<cr>
+" highlight lines in Sy and vimdiff etc.)
+highlight DiffAdd           cterm=bold ctermbg=none ctermfg=green
+highlight DiffDelete        cterm=bold ctermbg=none ctermfg=red
+highlight DiffChange        cterm=bold ctermbg=none ctermfg=yellow
+" highlight signs in Sy
+highlight SignifySignAdd    cterm=bold guibg=darkgray  ctermfg=green
+highlight SignifySignDelete cterm=bold guibg=darkgray  ctermfg=red
+highlight SignifySignChange cterm=bold guibg=darkgray  ctermfg=yellow
 
 " AsyncRun
 let g:asyncrun_open = 6
