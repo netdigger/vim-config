@@ -20,6 +20,8 @@ Plug 'w0rp/ale'
 Plug 'Shougo/echodoc.vim'
 Plug 'Yggdroot/LeaderF', {'do':'./install.sh'}
 Plug 'skywind3000/asyncrun.vim'
+Plug 'justinmk/vim-dirvish'
+Plug 'chiel92/vim-autoformat'
 
 " Initialize plugin system
 call plug#end()
@@ -29,17 +31,17 @@ syntax on            " On the syntax color
 filetype on
 filetype indent on
 filetype plugin indent on    " required
-colorscheme ron      " elflord ron peachpuff default 
+colorscheme ron      " elflord ron peachpuff default
 set autowrite        " AutoSave the modified file.
 set autoindent       " It is used 'set noautoindent' to cancel the auto indent.
 set number           " Enable line number
 set tabstop=4        " Tab stop
 set shiftwidth=4
-set noshowmode		 " Close Show mode
+set noshowmode       " Close Show mode
 set expandtab
-set softtabstop=4    " soft tab stop 
-set showmatch        " 
-set linebreak        " 
+set softtabstop=4    " soft tab stop
+set showmatch        "
+set linebreak        "
 set laststatus=2
 
 " Highlight the content over 80 characters.
@@ -49,6 +51,7 @@ match OverLength /\%81v.\+/
 highlight PMenu ctermfg=white  ctermbg=darkgray
 highlight PMenuSel ctermfg=white ctermbg=darkgreen
 
+let mapleader = " "
 set tags=./.tags;,.tags
 
 noremap <c-d> :sh<cr>
@@ -56,8 +59,19 @@ noremap <c-h> <c-w><c-h>
 noremap <c-j> <c-w><c-j>
 noremap <c-k> <c-w><c-k>
 noremap <c-l> <c-w><c-l>
-" Reindent
-noremap <leader>i gg=G 
+noremap <leader>ct :tabclose<cr>
+
+" Auto-Formate
+au BufWrite * :Autoformat
+noremap <leader>i gg=G
+let g:formatter_yapf_style = 'google'
+let g:formatdef_clangformat = "'clang-format
+            \ -lines='.a:firstline.':'.a:lastline.'
+            \ --assume-filename=\"'.expand('%:p').'\"
+            \ -style=\"{BasedOnStyle: Google, AlignTrailingComments: true,
+            \ '.(&textwidth ? 'ColumnLimit: '.&textwidth.', ' : '').(
+            \ &expandtab ? 'UseTab: Never, IndentWidth: '.shiftwidth() :
+            \ 'UseTab: Always').'}\"'"
 
 "Signify
 let g:signify_sign_add               = '+'
@@ -96,7 +110,7 @@ let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
 
 " 检测 ~/.cache/tags 不存在就新建
 if !isdirectory(s:vim_tags)
-   silent! call mkdir(s:vim_tags, 'p')
+    silent! call mkdir(s:vim_tags, 'p')
 endif
 
 "ALE
@@ -113,11 +127,11 @@ let g:ale_c_gcc_options = '-Wall -Wextra -O0 -std=c99'
 let g:ale_cpp_gcc_options = '-Wall -Wextra -O0 -std=c++14'
 let g:ale_c_cppcheck_options = ''
 let g:ale_cpp_cppcheck_options = ''
-"let g:ale_open_list = 1 
-let g:ale_set_quickfix = 0 
-let g:ale_set_highlights = 0 
-let g:ale_set_signs = 1  
-let g:ale_sign_column_always = 1 
+"let g:ale_open_list = 1
+let g:ale_set_quickfix = 0
+let g:ale_set_highlights = 0
+let g:ale_set_signs = 1
+let g:ale_sign_column_always = 1
 let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '⚡'
 let g:ale_echo_msg_error_str = '✗'
@@ -136,17 +150,17 @@ let g:ale_c_build_dir_names = ['build', 'release', 'debug']
 let g:ale_linters = {'cpp': ['clang']}
 
 " LeaderF
-noremap <c-p><c-o> :LeaderfFile<cr>
-noremap <c-p><c-i> :LeaderfMru<cr>
-noremap <c-p><c-n> :LeaderfFunction!<cr>
-noremap <c-p><c-m> :LeaderfBuffer<cr>
-noremap <c-p><c-u> :LeaderfTag<cr>
+noremap <leader>o :LeaderfFile<cr>
+noremap <leader>m :LeaderfMru<cr>
+noremap <leader>f :LeaderfFunction!<cr>
+noremap <leader>b :LeaderfBuffer<cr>
+noremap <leader>t :LeaderfTag<cr>
 let g:Lf_StlSeparator = { 'left': '', 'right': '', 'font': ''}
 let g:Lf_MruFileExclude = ['*.so', '*.a', '*.bin', '*.out']
 let g:Lf_WildIgnore = {
-			\ 'dir': ['.svn','.git','.hg'],
-			\ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]']
-			\}
+            \ 'dir': ['.svn','.git','.hg'],
+            \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]']
+            \}
 let g:Lf_RootMarkers = ['.root', '.svn', '.git']
 let g:Lf_WorkingDirectoryMode = 'aAc'
 let g:Lf_WindowHeight = 0.40
@@ -168,6 +182,7 @@ noremap <F3> :TagbarToggle<CR>
 set completeopt=menu,menuone
 " Close the preview window
 let g:ycm_add_preview_to_completeopt = 0
+"let g:ycm_server_python_interpreter = '/usr/bin/python2.7'
 let g:ycm_python_binary_path = 'python'
 let g:ycm_global_ycm_extra_conf='~/.vim/plugged/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
 let g:ycm_enable_diagnostic_signs = 0
@@ -180,7 +195,7 @@ let g:airline_solarized_bg='dark'
 let g:airline#extensions#branch#enabled = 1
 
 " EchoDoc
-set cmdheight=2
+set cmdheight=1
 let g:echodoc_enable_at_startup = 1
 
 " QuickFix setting --
@@ -194,9 +209,9 @@ inoremap <F9> <ESC>:cn<CR>
 inoremap <F10> :cclose<CR>
 
 "C++
-set cindent          " Using the indent format of C/C++ 
+set cindent          " Using the indent format of C/C++
 " set the style of C/C++ indent format.
-set cinoptions={0,1s,t0,n-2,p2s,(03s,=.5s,>1s,=1s,:1s     
+set cinoptions={0,1s,t0,n-2,p2s,(03s,=.5s,>1s,=1s,:1s
 autocmd FileType c,cpp noremap <F6> :make clean<CR>
 autocmd FileType c,cpp noremap <F7> :AsyncRun make<CR>copen<CR>
 autocmd FileType c,cpp noremap <F11> :make test<CR> :copen<CR>
@@ -213,5 +228,5 @@ let g:go_fmt_command = "goimports"   "replace gofmt by goimports
 
 "Octave and metlab
 augroup filetypedetect
-  au! BufRead,BufNewFile *.m,*.oct set filetype=octave
+    au! BufRead,BufNewFile *.m,*.oct set filetype=octave
 augroup END
