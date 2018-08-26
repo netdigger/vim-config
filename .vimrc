@@ -59,26 +59,14 @@ noremap <c-h> <c-w><c-h>
 noremap <c-j> <c-w><c-j>
 noremap <c-k> <c-w><c-k>
 noremap <c-l> <c-w><c-l>
-noremap <leader>ct :tabclose<cr>
 
-" Auto-Formate
-au BufWrite * :Autoformat
-noremap <leader>i gg=G
-let g:formatter_yapf_style = 'google'
-let g:formatdef_clangformat = "'clang-format
-            \ -lines='.a:firstline.':'.a:lastline.'
-            \ --assume-filename=\"'.expand('%:p').'\"
-            \ -style=\"{BasedOnStyle: Google, AlignTrailingComments: true,
-            \ '.(&textwidth ? 'ColumnLimit: '.&textwidth.', ' : '').(
-            \ &expandtab ? 'UseTab: Never, IndentWidth: '.shiftwidth() :
-            \ 'UseTab: Always').'}\"'"
-
-"Signify
+" Signify
 let g:signify_sign_add               = '+'
 let g:signify_sign_delete            = '-'
 let g:signify_sign_delete_first_line = '-'
 let g:signify_sign_change            = '~'
 noremap <leader>d :SignifyDiff<cr>
+noremap <leader>tc :tabclose<cr>
 " highlight lines in Sy and vimdiff etc.)
 highlight DiffAdd           cterm=bold ctermbg=none ctermfg=green
 highlight DiffDelete        cterm=bold ctermbg=none ctermfg=red
@@ -230,3 +218,15 @@ let g:go_fmt_command = "goimports"   "replace gofmt by goimports
 augroup filetypedetect
     au! BufRead,BufNewFile *.m,*.oct set filetype=octave
 augroup END
+
+" Auto-Format
+au BufWrite *.cpp,*.h,*.c,*.py :Autoformat
+noremap <leader>i :Autoformat <cr>
+let g:formatter_yapf_style = 'google'
+let g:formatdef_clangformat = "'clang-format
+            \ -lines='.a:firstline.':'.a:lastline.'
+            \ --assume-filename=\"'.expand('%:p').'\"
+            \ -style=\"{BasedOnStyle: Google, AlignTrailingComments: true,
+            \ '.(&textwidth ? 'ColumnLimit: '.&textwidth.', ' : '').(
+            \ &expandtab ? 'UseTab: Never, IndentWidth: '.shiftwidth() :
+            \ 'UseTab: Always').'}\"'"
