@@ -5,8 +5,6 @@ set nocompatible              " be iMproved, required
 "Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
 
-Plug 'majutsushi/tagbar'
-Plug 'scrooloose/nerdtree'
 Plug 'fatih/vim-go', {'do': ':GoUpdateBinaries'}
 Plug 'nsf/gocode', {'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh'}
 Plug 'netdigger/vim-octave'
@@ -36,10 +34,10 @@ set autowrite        " AutoSave the modified file.
 set autoindent       " It is used 'set noautoindent' to cancel the auto indent.
 set number           " Enable line number
 set tabstop=4        " Tab stop
-set shiftwidth=4
-set noshowmode       " Close Show mode
 set expandtab
-set softtabstop=4    " soft tab stop
+set shiftwidth=4     " Indent width
+set softtabstop=4    " Soft tab stop
+set noshowmode       " Close Show mode
 set showmatch        "
 set linebreak        "
 set laststatus=2
@@ -54,7 +52,6 @@ highlight PMenuSel ctermfg=white ctermbg=darkgreen
 let mapleader = " "
 set tags=./.tags;,.tags
 
-noremap <c-d> :sh<cr>
 noremap <c-h> <c-w><c-h>
 noremap <c-j> <c-w><c-j>
 noremap <c-k> <c-w><c-k>
@@ -158,14 +155,6 @@ let g:Lf_HideHelp = 1
 let g:Lf_StlColorscheme = 'powerline'
 let g:Lf_PreviewResult = {'Function':0, 'BufTag':0}
 
-"NERDTree
-noremap <F2> :NERDTreeToggle<CR>
-let g:NERDTreeWinSize=35
-
-"Tagbar
-let g:tagbar_width = 35 "设置宽度
-noremap <F3> :TagbarToggle<CR>
-
 "YouCompleteMe
 set completeopt=menu,menuone
 " Close the preview window
@@ -221,7 +210,7 @@ augroup END
 
 " Auto-Format
 au BufWrite *.cpp,*.h,*.c,*.py :Autoformat
-noremap <leader>i :Autoformat <cr>
+noremap <leader>i :Autoformat<cr>
 let g:formatter_yapf_style = 'google'
 let g:formatdef_clangformat = "'clang-format
             \ -lines='.a:firstline.':'.a:lastline.'
