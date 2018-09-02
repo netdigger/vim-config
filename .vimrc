@@ -57,13 +57,18 @@ noremap <c-j> <c-w><c-j>
 noremap <c-k> <c-w><c-k>
 noremap <c-l> <c-w><c-l>
 
+"Terminal
+noremap <leader>w :vert ter ++open ++cols=65<CR>
+tnoremap <Esc> <C-W>N
+tnoremap <C-C> <C-W><C-C>
+
 " Signify
 let g:signify_sign_add               = '+'
 let g:signify_sign_delete            = '-'
 let g:signify_sign_delete_first_line = '-'
 let g:signify_sign_change            = '~'
 noremap <leader>d :SignifyDiff<cr>
-noremap <leader>tc :tabclose<cr>
+noremap <leader>c :tabclose<cr>
 " highlight lines in Sy and vimdiff etc.)
 highlight DiffAdd           cterm=bold ctermbg=none ctermfg=green
 highlight DiffDelete        cterm=bold ctermbg=none ctermfg=red
@@ -140,6 +145,7 @@ noremap <leader>m :LeaderfMru<cr>
 noremap <leader>f :LeaderfFunction!<cr>
 noremap <leader>b :LeaderfBuffer<cr>
 noremap <leader>t :LeaderfTag<cr>
+noremap <leader>l :LeaderfLine<cr>
 let g:Lf_StlSeparator = { 'left': '', 'right': '', 'font': ''}
 let g:Lf_MruFileExclude = ['*.so', '*.a', '*.bin', '*.out']
 let g:Lf_WildIgnore = {
@@ -177,12 +183,12 @@ let g:echodoc_enable_at_startup = 1
 
 " QuickFix setting --
 " C++
-noremap <F8> :cp<CR>
-noremap <F9> :cn<CR>
+noremap <F8> :cn<CR>
+noremap <F9> :cp<CR>
 noremap <F10> :cclose<CR>
 
-inoremap <F8> <ESC>:cp<CR>
-inoremap <F9> <ESC>:cn<CR>
+inoremap <F8> <ESC>:cn<CR>
+inoremap <F9> <ESC>:cp<CR>
 inoremap <F10> :cclose<CR>
 
 "C++
