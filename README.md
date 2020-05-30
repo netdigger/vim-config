@@ -2,7 +2,7 @@
 
 The vim config for IDE of C/C++ python golang
 
-\#user manual
+# user manual
 
 ## install ctags
 
