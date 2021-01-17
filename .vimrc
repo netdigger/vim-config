@@ -182,6 +182,10 @@ set cmdheight=1
 let g:echodoc_enable_at_startup = 1
 
 " QuickFix setting --
+" Insert DateTime String
+noremap <c-t> :put =strftime('%Y-%m-%dT%H:%M:%S%z')<CR>
+inoremap <c-t> <ESC>:put =strftime('%Y-%m-%dT%H:%M:%S%z')<CR>
+
 " C++
 noremap <F8> :cn<CR>
 noremap <F9> :cp<CR>
@@ -221,7 +225,11 @@ let g:formatter_yapf_style = 'google'
 let g:formatdef_clangformat = "'clang-format
             \ -lines='.a:firstline.':'.a:lastline.'
             \ --assume-filename=\"'.expand('%:p').'\"
-            \ -style=\"{BasedOnStyle: Google, AlignTrailingComments: true,
-            \ '.(&textwidth ? 'ColumnLimit: '.&textwidth.', ' : '').(
-            \ &expandtab ? 'UseTab: Never, IndentWidth: '.shiftwidth() :
-            \ 'UseTab: Always').'}\"'"
+            \ -style=file'"
+"let g:formatdef_clangformat = "'clang-format
+"            \ -lines='.a:firstline.':'.a:lastline.'
+"            \ --assume-filename=\"'.expand('%:p').'\"
+"            \ -style=\"{BasedOnStyle: Google, AlignTrailingComments: true,
+"            \ '.(&textwidth ? 'ColumnLimit: '.&textwidth.', ' : '').(
+"            \ &expandtab ? 'UseTab: Never, IndentWidth: '.shiftwidth() :
+"            \ 'UseTab: Always').'}\"'"
