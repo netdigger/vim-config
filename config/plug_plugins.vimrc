@@ -16,6 +16,7 @@ Plug 'Yggdroot/LeaderF', {'do':'./install.sh'}
 Plug 'skywind3000/asyncrun.vim'
 Plug 'justinmk/vim-dirvish'
 Plug 'chiel92/vim-autoformat'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
 " Initialize plugin system
 call plug#end()
