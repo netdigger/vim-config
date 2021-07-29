@@ -10,8 +10,6 @@ The vim config for IDE of C/C++ python golang
 
 sudo apt install exuberant-ctags
 
-### Mac Os
-
 ## Install vim-plug
 
          curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
@@ -19,7 +17,9 @@ sudo apt install exuberant-ctags
 
 ## install vim-config
 
-         wget https://raw.githubusercontent.com/netdigger/vim-config/master/.vimrc ~/
+Clone the source code to the home direcotry.
+
+         ln -s ~/vim-config/vim.rc .vimrc 
 
 ## Innstall code formatter
 
@@ -30,6 +30,10 @@ sudo apt install exuberant-ctags
 
          sudo apt install fonts-powerline
          pip install powerline-status
+
+## install FZF
+
+Please reference FZF document: https://github.com/junegunn/fzf
 
 # install plugins
 
