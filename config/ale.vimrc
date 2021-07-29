@@ -16,7 +16,7 @@ let g:ale_c_cc_options = '-Wall -Wextra -O0 -std=c99'
 let g:ale_c_gcc_options = '-Wall -Wextra -O0 -std=c99'
 let g:ale_c_clang_options = '-Wall -Wextra -O0 -std=c99'
 
-# C++
+" C++
 let g:ale_cpp_gcc_options = '-Wall -Wextra -O0 -std=c++17'
 let g:ale_cpp_clang_options = '-Wall -Wextra -O0 -std=c++17'
 let g:ale_cpp_cc_options = '-Wall -Wextra -O0 -std=c++17'

@@ -17,6 +17,9 @@ Plug 'skywind3000/asyncrun.vim'
 Plug 'justinmk/vim-dirvish'
 Plug 'chiel92/vim-autoformat'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'prettier/vim-prettier', {'do': 'yarn install'}
+
 
 " Initialize plugin system
 call plug#end()
