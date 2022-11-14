@@ -19,11 +19,12 @@ sudo apt install exuberant-ctags
 
 Clone the source code to the home direcotry.
 
+         git clone https://github.com/netdigger/vim-config.git ~/
          ln -s ~/vim-config/vim.rc .vimrc 
 
 ## Innstall code formatter
 
-         sudo apt install clang-format
+         sudo apt install clang-format exuberant-ctags
          suod apt install yapf
 
 ## Insall fonts of powerline
