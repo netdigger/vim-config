@@ -54,3 +54,15 @@ for detail information
 
 Ff you want change the color of auto complete menu, 
 please refer the web page: [Colors](https://jonasjacek.github.io/colors/)
+
+## Install config for file types 
+
+Create links for all files in ftplug to .vim/ftplugin.
+
+Example:
+
+```bash
+cd ~/.vim/ftplugin
+ln -s ../vim-config/ftplugin/typescript.vim typescript.vim
+
+```

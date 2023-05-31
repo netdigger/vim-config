@@ -11,6 +11,7 @@ syntax on            " On the syntax color
 filetype on
 filetype indent on
 filetype plugin indent on    " required
+filetype detect
 colorscheme ron      " elflord ron peachpuff default
 set autowrite        " AutoSave the modified file.
 set autoindent       " It is used 'set noautoindent' to cancel the auto indent.
