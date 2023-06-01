@@ -25,9 +25,6 @@ set showmatch        "
 set linebreak        "
 set laststatus=2
 
-" Highlight the content over 80 characters.
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%81v.\+/
 
 highlight PMenu ctermfg=white  ctermbg=darkgray
 highlight PMenuSel ctermfg=white ctermbg=darkgreen
