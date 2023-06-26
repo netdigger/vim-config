@@ -86,8 +86,11 @@ endif
 " ALE
 source ~/vim-config/config/ale.vimrc
 
+" FZF
+source ~/vim-config/config/fzf.vimrc
+
 " LeaderF
-noremap <leader>o :LeaderfFile<cr>
+" noremap <leader>o :LeaderfFile<cr>
 noremap <leader>m :LeaderfMru<cr>
 noremap <leader>f :LeaderfFunction!<cr>
 noremap <leader>b :LeaderfBuffer<cr>
