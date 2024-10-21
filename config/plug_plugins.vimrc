@@ -4,7 +4,7 @@ call plug#begin('~/.vim/plugged')
 " Plug 'fatih/vim-go', {'do': ':GoUpdateBinaries'}
 Plug 'nsf/gocode', {'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh'}
 Plug 'netdigger/vim-octave'
-Plug 'Valloric/YouCompleteMe'
+Plug 'ycm-core/YouCompleteMe'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive' "git
