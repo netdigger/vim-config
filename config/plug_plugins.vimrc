@@ -2,7 +2,8 @@
 call plug#begin('~/.vim/plugged')
 
 " Plug 'fatih/vim-go', {'do': ':GoUpdateBinaries'}
-Plug 'nsf/gocode', {'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh'}
+" gocode is deprecated, replaced by gopls (Go LSP)
+" Plug 'nsf/gocode', {'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh'}
 Plug 'netdigger/vim-octave'
 Plug 'ycm-core/YouCompleteMe'
 Plug 'vim-airline/vim-airline'
@@ -10,7 +11,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive' "git
 Plug 'mhinz/vim-signify' "git
 Plug 'ludovicchabant/vim-gutentags' "ctags
-Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 Plug 'Shougo/echodoc.vim'
 Plug 'Yggdroot/LeaderF', {'do':':LeaderfInstallCExtension'}
 Plug 'skywind3000/asyncrun.vim'

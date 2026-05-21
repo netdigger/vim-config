@@ -35,12 +35,12 @@ let g:ale_echo_msg_warning_str = '⚡'
 hi clear SpellBad
 hi clear SpellCap
 hi clear SpellRare
-hi SpellBad gui=undercurl guisp=red
-hi SpellCap gui=undercurl guisp=blue
-hi SpellRare gui=undercurl guisp=magenta
+hi SpellBad gui=undercurl guisp=red cterm=undercurl ctermfg=red
+hi SpellCap gui=undercurl guisp=blue cterm=undercurl ctermfg=blue
+hi SpellRare gui=undercurl guisp=magenta cterm=undercurl ctermfg=magenta
 hi clear SignColumn
-hi ALEErrorSign guibg=darkgray ctermfg=red
-hi ALEWarningSign guibg=darkgray ctermfg = yellow
+hi ALEErrorSign ctermbg=darkgray ctermfg=red guibg=darkgray
+hi ALEWarningSign ctermbg=darkgray ctermfg=yellow guibg=darkgray
 let g:ale_c_parse_compile_commands = 1
 let g:ale_c_build_dir_names = ['build', 'release', 'debug']
 
