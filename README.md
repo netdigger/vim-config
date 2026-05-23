@@ -109,6 +109,7 @@ Status bar at top shows: session name, git branch (when in a repo), pane sync in
 | `C-j e` | Synchronize input to all panes (on) |
 | `C-j E` | Synchronize input to all panes (off) |
 | `C-j C-r` | Reload tmux config |
+| `C-j Q` | Quit tmux (prompts for confirmation) |
 | `C-j [` | Enter copy mode (vi keys) |
 | `s` (copy mode) | Begin selection |
 | `c` (copy mode) | Copy selection and cancel |
