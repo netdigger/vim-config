@@ -38,6 +38,7 @@ PACKAGES=(
     build-essential
     cmake
     python3-dev
+    golang-go
 )
 info "Installing apt packages..."
 for pkg in "${PACKAGES[@]}"; do
@@ -102,7 +103,21 @@ else
     info "fzf installed"
 fi
 
-# ── 6. yapf (Python formatter) ──
+# ── 6. gopls (Go language server) ──
+step "gopls (Go LSP)"
+if command -v gopls &>/dev/null; then
+    info "gopls already installed ($(gopls version 2>&1))"
+else
+    export PATH="$PATH:$HOME/go/bin"
+    if command -v go &>/dev/null; then
+        info "Installing gopls..."
+        go install golang.org/x/tools/gopls@latest 2>&1 || warn "gopls install failed"
+    else
+        warn "Go not found — skipping gopls"
+    fi
+fi
+
+# ── 7. yapf (Python formatter) ──
 step "yapf"
 if command -v yapf &>/dev/null; then
     info "yapf already installed ($(yapf --version 2>&1))"
@@ -131,11 +146,11 @@ if compgen -G "$YCM_CORE" &>/dev/null; then
     info "YCM already compiled"
 else
     if [ -d "$VIM_HOME/plugged/YouCompleteMe" ]; then
-        info "Compiling YouCompleteMe (C/C++, JS/TS, Python)..."
+        info "Compiling YouCompleteMe (C/C++, JS/TS, Python, Go)..."
         cd "$VIM_HOME/plugged/YouCompleteMe"
-        python3 install.py --clang-completer --ts-completer 2>&1 || {
+        python3 install.py --clang-completer --ts-completer --go-completer 2>&1 || {
             warn "YCM compilation failed."
-            warn "Try manually: cd ~/.vim/plugged/YouCompleteMe && python3 install.py --clang-completer --ts-completer"
+            warn "Try manually: cd ~/.vim/plugged/YouCompleteMe && python3 install.py --clang-completer --ts-completer --go-completer"
         }
     else
         warn "YCM plugin not found. Run :PlugInstall in Vim first."
@@ -183,6 +198,9 @@ echo "  Language support:"
 echo "    C/C++          clangd + cppcheck + YCM"
 echo "    Python         jedi (YCM) + yapf"
 echo "    JavaScript/TS  tsserver (YCM) + prettier"
-echo "    Go             goimports (if go installed)"
+echo "    Go             gopls (YCM) + goimports"
 echo "    Octave/Matlab  vim-octave"
+echo ""
+echo "  PATH updates:"
+echo "    \$HOME/go/bin  (gopls, go tools) — added to ~/.bashrc"
 echo ""
