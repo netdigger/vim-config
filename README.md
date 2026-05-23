@@ -115,11 +115,11 @@ Status bar (tmux-powerline) at bottom: session, git branch, hostname, date, time
 | `C-j C-r` | Reload tmux config |
 | `C-j Q` | Quit tmux (prompts for confirmation) |
 | `C-j [` | Enter copy mode (vi keys) |
-| `s` (copy mode) | Begin selection |
-| `c` (copy mode) | Copy selection and cancel |
+| `v` / `s` (copy mode) | Begin selection |
+| `y` / `c` (copy mode) | Yank/copy selection and exit |
 | `C-j [` | Enter copy mode (vi keys) |
-| `s` (copy mode) | Begin selection |
-| `c` (copy mode) | Copy selection and cancel |
+| `v` / `s` (copy mode) | Begin selection |
+| `y` / `c` (copy mode) | Yank/copy selection and exit |
 
 ## Project structure
 
