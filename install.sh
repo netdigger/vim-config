@@ -169,9 +169,18 @@ configure_vim() {
 
 # ── configure_tmux ──
 configure_tmux() {
+    # tmux-powerline
+    if [ ! -d "$HOME/.tmux/powerline" ]; then
+        git clone --depth 1 https://github.com/erikw/tmux-powerline.git "$HOME/.tmux/powerline" 2>/dev/null || \
+            warn "tmux-powerline clone failed"
+    fi
+
     step "Deploy tmux config"
+    mkdir -p "$HOME/.tmux"
     cp "$SCRIPT_DIR/tmux/tmux.conf" "$HOME/.tmux.conf"
+    cp "$SCRIPT_DIR/tmux/powerline-theme.sh" "$HOME/.tmux/powerline-theme.sh"
     info "tmux/tmux.conf → ~/.tmux.conf"
+    info "tmux/powerline-theme.sh → ~/.tmux/powerline-theme.sh"
     info "Reload with: tmux source-file ~/.tmux.conf  (or C-j C-r)"
 }
 

@@ -101,6 +101,8 @@ Leader key: <kbd>Space</kbd>
 
 Prefix: <kbd>Ctrl-j</kbd> (double-tap to pass through)
 
+Status bar at top shows: session name, git branch (when in a repo), pane sync indicator, time.
+
 | Key | Action |
 |-----|--------|
 | `C-j h/j/k/l` | Switch pane left/down/up/right |
