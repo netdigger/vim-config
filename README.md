@@ -28,7 +28,13 @@ It is safe to run multiple times (all steps are idempotent). Run it again after
 
 ## Color scheme
 
-Default: **gruvbox** (warm retro dark). Also included: `nord` (cool blue-gray), `onehalfdark` (high contrast). Switch with `:colorscheme gruvbox`, `:colorscheme nord`, `:colorscheme onehalfdark`.
+| Scheme | Description |
+|--------|-------------|
+| `gruvbox` (default) | Warm retro dark, best C/C++ syntax distinction |
+| `nord` | Cool blue-gray |
+| `onehalfdark` | High contrast, VC++6.0-like |
+
+Switch with `:colorscheme <name>`.
 
 ## Keybindings
 
