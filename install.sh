@@ -178,9 +178,9 @@ configure_tmux() {
     step "Deploy tmux config"
     mkdir -p "$HOME/.tmux"
     cp "$SCRIPT_DIR/tmux/tmux.conf" "$HOME/.tmux.conf"
-    cp "$SCRIPT_DIR/tmux/powerline-theme.sh" "$HOME/.tmux/powerline-theme.sh"
+    cp "$SCRIPT_DIR/tmux/powerline-theme.sh" "$HOME/.tmux/powerline/themes/dark.sh"
     info "tmux/tmux.conf → ~/.tmux.conf"
-    info "tmux/powerline-theme.sh → ~/.tmux/powerline-theme.sh"
+    info "tmux/powerline-theme.sh → ~/.tmux/powerline/themes/dark.sh"
     info "Reload with: tmux source-file ~/.tmux.conf  (or C-j C-r)"
 }
 
