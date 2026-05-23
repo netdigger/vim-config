@@ -10,7 +10,7 @@ execute 'source ' . s:config_dir . '/config/plug_plugins.vimrc'
 " ── Common settings ──
 syntax on
 filetype plugin indent on
-colorscheme gruvbox
+silent! colorscheme gruvbox
 set autowrite
 set autoindent
 set number

@@ -121,12 +121,8 @@ configure_vim() {
     mkdir -p "$VIM_HOME/cache" "$HOME/.cache/tags"
 
     step "Vim plugins"
-    if [ -d "$VIM_HOME/plugged/ale" ]; then
-        info "Plugins already installed"
-    else
-        vim +PlugInstall +qall 2>/dev/null || warn "Run :PlugInstall in Vim manually"
-        info "Plugins installed"
-    fi
+    vim +PlugInstall +qall 2>/dev/null || warn "Run :PlugInstall in Vim manually"
+    info "Plugins installed"
 
     step "YouCompleteMe"
     YCM_CORE="$VIM_HOME/plugged/YouCompleteMe/third_party/ycmd/ycm_core.cpython-*.so"
@@ -159,7 +155,7 @@ configure_vim() {
         if command -v yarn &>/dev/null; then
             yarn install 2>&1 || warn "yarn install failed"
         elif command -v npm &>/dev/null; then
-            npm install 2>&1 || warn "npm install failed"
+            npm install --legacy-peer-deps 2>&1 || warn "npm install failed"
         else
             warn "yarn/npm not found"
         fi

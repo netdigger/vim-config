@@ -9,7 +9,8 @@ let g:ale_lint_on_insert_leave = 1
 let g:airline#extensions#ale#enabled = 1
 let g:ale_statusline_format = ['✗•%d', '⚡•%d', '✔ OK']
 
-let g:ale_linters = {'cpp': ['clang', 'g++'], 'c' :['clang']}
+let g:ale_linters = {'cpp': ['g++'], 'c' :['clang']}
+let g:ale_cpp_cc_executable = 'g++'
 
 " C 
 let g:ale_c_cc_options = '-Wall -Wextra -O0 -std=c99'
