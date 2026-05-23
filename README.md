@@ -22,6 +22,7 @@ It is safe to run multiple times (all steps are idempotent). Run it again after
 | C / C++        | YCM + clangd     | ALE (clang, cppcheck)| clang-format  |
 | Python         | YCM (jedi)       | ALE                  | yapf          |
 | JavaScript/TS  | YCM (tsserver)   | ALE                  | prettier      |
+| CMake          | YCM (cmake-ls)   | ALE (cmakelint)       | cmake-format  |
 | Go             | YCM + gopls      | ALE (gopls, golangci-lint)| goimports     |
 | Octave/Matlab  | —                | —                    | —             |
 
@@ -48,6 +49,7 @@ vim-config/
 ├── ftplugin/                 ← per-filetype settings
 │   ├── c.vim                 ← C / C++
 │   ├── python.vim            ← Python
+│   ├── cmake.vim              ← CMake
 │   ├── go.vim                ← Go
 │   ├── javascript.vim        ← JavaScript
 │   ├── javascriptreact.vim   ← JSX / React

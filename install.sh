@@ -127,7 +127,18 @@ else
     pipx install yapf 2>/dev/null || warn "yapf install failed; try: pipx install yapf"
 fi
 
-# ── 7. Vim plugins ──
+# ── 8. CMake tools ──
+step "CMake (language-server, linter, formatter)"
+export PATH="$HOME/.local/bin:$PATH"
+for tool in cmake-language-server cmakelint cmake-format; do
+    if command -v "$tool" &>/dev/null; then
+        info "$tool already installed"
+    else
+        pipx install "$tool" 2>/dev/null || warn "$tool install failed"
+    fi
+done
+
+# ── 9. Vim plugins ──
 step "Vim plugins (:PlugInstall)"
 if [ -d "$VIM_HOME/plugged/ale" ]; then
     info "Plugins already installed (found ale)"
@@ -139,7 +150,7 @@ else
     }
 fi
 
-# ── 8. YouCompleteMe ──
+# ── 10. YouCompleteMe ──
 step "YouCompleteMe"
 YCM_CORE="$VIM_HOME/plugged/YouCompleteMe/third_party/ycmd/ycm_core.cpython-*.so"
 if compgen -G "$YCM_CORE" &>/dev/null; then
@@ -157,7 +168,7 @@ else
     fi
 fi
 
-# ── 9. LeaderF C extension ──
+# ── 11. LeaderF C extension ──
 step "LeaderF C extension"
 LF_SO="$VIM_HOME/plugged/LeaderF/autoload/leaderf/python/fuzzyMatchC.cpython-*.so"
 if compgen -G "$LF_SO" &>/dev/null; then
@@ -170,7 +181,7 @@ else
     fi
 fi
 
-# ── 10. vim-prettier deps ──
+# ── 12. vim-prettier ──
 step "vim-prettier"
 if [ -d "$VIM_HOME/plugged/vim-prettier/node_modules" ]; then
     info "prettier dependencies already installed"
@@ -198,6 +209,7 @@ echo "  Language support:"
 echo "    C/C++          clangd + cppcheck + YCM"
 echo "    Python         jedi (YCM) + yapf"
 echo "    JavaScript/TS  tsserver (YCM) + prettier"
+echo "    CMake          language-server + cmakelint + cmake-format"
 echo "    Go             gopls (YCM) + goimports"
 echo "    Octave/Matlab  vim-octave"
 echo ""

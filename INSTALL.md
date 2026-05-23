@@ -47,6 +47,17 @@ pipx ensurepath
 pipx install yapf
 ```
 
+## CMake tools
+
+```
+pipx install cmake-language-server
+pipx install cmakelint
+pipx install cmake-format
+```
+
+> YCM auto-detects `cmake-language-server` for completion and diagnostics.
+> ALE auto-detects `cmakelint` for linting.
+
 ## Vim plugins
 
 Open Vim and run `:PlugInstall`, or:
