@@ -22,12 +22,12 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 ## Deploy config files
 
 ```
-mkdir -p ~/.vim
-cp vimrc ~/.vimrc
-cp -r config ~/.vim/config
-cp -r ftplugin ~/.vim/ftplugin
-cp -r ftdetect ~/.vim/ftdetect
-mkdir -p ~/.vim/cache ~/.cache/tags
+mkdir -p ~/.vim ~/.vim/cache ~/.cache/tags
+cp vim/vimrc ~/.vimrc
+cp -r vim/config ~/.vim/config
+cp -r vim/ftplugin ~/.vim/ftplugin
+cp -r vim/ftdetect ~/.vim/ftdetect
+cp tmux/tmux.conf ~/.tmux.conf
 ```
 
 ## FZF

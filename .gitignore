@@ -1,6 +1,11 @@
-#temporary file
+# temporary files
 *.swp
 *~
 .DS_Store
 *.so
 __pycache__/
+
+# agent skills (installed by npx skills add)
+.agents/
+.claude/skills/
+skills-lock.json

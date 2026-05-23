@@ -1,5 +1,5 @@
 " ── Terminal ──
-" <Space>t  = toggle (show/hide, keeps process alive)
+" <Space>`  = toggle terminal (show/hide, keeps process alive)
 " <Space>w  = vertical terminal
 " <Space>W  = horizontal terminal
 " <Esc><Esc> = exit Terminal-Insert mode
@@ -19,8 +19,8 @@ function! s:TermToggle()
     endif
 endfunction
 
-nnoremap <leader>t :call <SID>TermToggle()<CR>
-tnoremap <leader>t <C-\><C-n>:call <SID>TermToggle()<CR>
+nnoremap <leader>` :call <SID>TermToggle()<CR>
+tnoremap <leader>` <C-\><C-n>:call <SID>TermToggle()<CR>
 
 nnoremap <leader>w :vert ter ++open ++cols=65<CR>
 nnoremap <leader>W :below ter ++open ++rows=15<CR>
