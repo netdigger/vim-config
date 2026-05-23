@@ -30,6 +30,14 @@ cp -r vim/ftdetect ~/.vim/ftdetect
 cp tmux/tmux.conf ~/.tmux.conf
 ```
 
+### tmux-powerline (status bar)
+
+```
+git clone --depth 1 https://github.com/erikw/tmux-powerline.git ~/.tmux/powerline
+mkdir -p ~/.tmux/powerline/themes
+cp tmux/powerline-theme.sh ~/.tmux/powerline/themes/dark.sh
+```
+
 ## FZF
 
 ```
