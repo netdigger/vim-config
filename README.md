@@ -35,10 +35,11 @@ Leader key: <kbd>Space</kbd>
 | Key | Action |
 |-----|--------|
 | `Ctrl-h/j/k/l` | Move to left/down/up/right window |
+| `<Space>t` | Toggle terminal (show/hide, keeps process alive) |
 | `<Space>w` | Open vertical terminal (65 cols) |
 | `<Space>W` | Open horizontal terminal (15 rows) |
 | `<Esc><Esc>` (terminal) | Switch to Terminal-Normal mode |
-| `<Space>tc` (terminal) | Close terminal window |
+| `<Space>tc` (terminal) | Close terminal window (kills process) |
 ### File / Symbol / Buffer
 
 | Key | Action |
@@ -113,6 +114,7 @@ vim-config/
 │   ├── gutentags.vimrc       ← ctags management
 │   ├── leaderf.vimrc         ← file / tag / function navigation
 │   ├── fzf.vimrc             ← fuzzy finder
+│   ├── terminal.vimrc        ← toggle/hide terminal
 │   ├── asyncrun.vimrc        ← async build
 │   ├── echodoc.vimrc         ← command-line echo
 │   ├── autoformat.vimrc      ← code formatting
