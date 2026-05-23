@@ -43,9 +43,18 @@ nnoremap <c-k> <c-w><c-k>
 nnoremap <c-l> <c-w><c-l>
 
 " ── Terminal ──
+" <Space>w  = vertical terminal, <Space>W = horizontal terminal
 nnoremap <leader>w :vert ter ++open ++cols=65<CR>
-tnoremap <Esc> <C-W>N
-tnoremap <C-C> <C-W><C-C>
+nnoremap <leader>W :below ter ++open ++rows=15<CR>
+
+" Double-Esc to leave Terminal-Insert mode (single Esc passes through)
+tnoremap <Esc><Esc> <C-\><C-n>
+
+" Close terminal window when in Terminal-Normal mode
+tnoremap <leader>tc <C-\><C-n><C-w><C-c>
+
+" Enter terminal-insert mode automatically when entering a terminal buffer
+autocmd BufWinEnter,WinEnter term://* startinsert
 
 " ── Plugin configs ──
 execute 'source ' . s:config_dir . '/config/git.vimrc'

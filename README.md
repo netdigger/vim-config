@@ -36,8 +36,9 @@ Leader key: <kbd>Space</kbd>
 |-----|--------|
 | `Ctrl-h/j/k/l` | Move to left/down/up/right window |
 | `<Space>w` | Open vertical terminal (65 cols) |
-| `<Esc>` (terminal) | Switch to Terminal-Normal mode |
-| `Ctrl-c` (terminal) | Send Ctrl-C to terminal |
+| `<Space>W` | Open horizontal terminal (15 rows) |
+| `<Esc><Esc>` (terminal) | Switch to Terminal-Normal mode |
+| `<Space>tc` (terminal) | Close terminal window |
 ### File / Symbol / Buffer
 
 | Key | Action |
@@ -95,12 +96,6 @@ Leader key: <kbd>Space</kbd>
 |-----|--------|
 | `Ctrl-t` | Insert ISO 8601 timestamp |
 
-### Terminal Mode
-
-| Key | Action |
-|-----|--------|
-| `<Esc>` | Switch to Terminal-Normal mode |
-| `Ctrl-c` | Send Ctrl-C to terminal |
 
 ## Project structure
 
