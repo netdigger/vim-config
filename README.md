@@ -26,6 +26,10 @@ It is safe to run multiple times (all steps are idempotent). Run it again after
 | Go             | YCM + gopls      | ALE (gopls, golangci-lint)| goimports     |
 | Octave/Matlab  | —                | —                    | —             |
 
+## Color scheme
+
+Default: **gruvbox** (warm retro dark). Also included: `nord` (cool blue-gray), `onehalfdark` (high contrast). Switch with `:colorscheme gruvbox`, `:colorscheme nord`, `:colorscheme onehalfdark`.
+
 ## Keybindings
 
 Leader key: <kbd>Space</kbd>
