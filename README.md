@@ -105,7 +105,11 @@ Status bar (tmux-powerline) at bottom: session, git branch, hostname, date, time
 
 | Key | Action |
 |-----|--------|
+| `C-j \|` | Split pane vertically (left/right) |
+| `C-j -` | Split pane horizontally (up/down) |
 | `C-j h/j/k/l` | Switch pane left/down/up/right |
+| `C-j z` | Toggle pane zoom (maximize/restore) |
+| `C-j Enter` | Popup terminal (80% size) |
 | `C-j e` | Synchronize input to all panes (on) |
 | `C-j E` | Synchronize input to all panes (off) |
 | `C-j C-r` | Reload tmux config |
