@@ -121,8 +121,38 @@ configure_vim() {
     mkdir -p "$VIM_HOME/cache" "$HOME/.cache/tags"
 
     step "Vim plugins"
-    vim +PlugInstall +qall 2>/dev/null || warn "Run :PlugInstall in Vim manually"
-    info "Plugins installed"
+    local plugin_dir="$VIM_HOME/plugged"
+    local snapshot_file="$(mktemp)"
+
+    # Snapshot current plugin revisions
+    if [ -d "$plugin_dir" ]; then
+        for d in "$plugin_dir"/*/; do
+            if git -C "$d" rev-parse HEAD >/dev/null 2>&1; then
+                printf '%s %s\n' "$(basename "$d")" "$(git -C "$d" rev-parse HEAD)" >> "$snapshot_file"
+            fi
+        done
+    fi
+
+    vim +PlugUpgrade +PlugUpdate +qall 2>/dev/null || warn "Run :PlugUpdate in Vim manually"
+    info "Plugins installed/updated"
+
+    # Smoke test: can vim start without errors?
+    if ! vim -c quit 2>&1; then
+        if [ -s "$snapshot_file" ]; then
+            warn "Vim startup failed — rolling back to previous plugin revisions"
+            while IFS=' ' read -r name commit; do
+                local d="$plugin_dir/$name"
+                if [ -d "$d" ] && git -C "$d" rev-parse HEAD >/dev/null 2>&1; then
+                    git -C "$d" checkout "$commit" 2>/dev/null || true
+                fi
+            done < "$snapshot_file"
+            warn "All plugins rolled back. Some plugins may require a newer Vim — check with: vim --version"
+        else
+            warn "Vim startup failed with fresh plugins. Your Vim version may be too old — check with: vim --version"
+        fi
+    fi
+
+    rm -f "$snapshot_file"
 
     step "YouCompleteMe"
     YCM_CORE="$VIM_HOME/plugged/YouCompleteMe/third_party/ycmd/ycm_core.cpython-*.so"
