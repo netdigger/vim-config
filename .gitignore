@@ -1,3 +1,6 @@
 #temporary file
 *.swp
+*~
 .DS_Store
+*.so
+__pycache__/

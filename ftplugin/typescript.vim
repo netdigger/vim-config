@@ -1,1 +1,1 @@
-noremap <leader>i :Prettier<cr>
+nnoremap <buffer> <leader>i :Prettier<cr>

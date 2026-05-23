@@ -1,3 +1,2 @@
-set nobackup
-set noswapfile
-noremap <leader>i :Prettier<cr>
+setlocal nobackup
+nnoremap <buffer> <leader>i :Prettier<cr>

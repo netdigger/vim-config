@@ -1,5 +1,5 @@
 "au BufWrite *.cpp,*.h,*.c,*.py :Autoformat
-noremap <leader>i :Autoformat<cr>
+nnoremap <silent> <leader>i :Autoformat<cr>
 let g:formatter_yapf_style = 'google'
 let g:formatdef_clangformat = "'clang-format
             \ -lines='.a:firstline.':'.a:lastline.'
