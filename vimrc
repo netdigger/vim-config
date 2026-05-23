@@ -48,7 +48,7 @@ tnoremap <Esc> <C-W>N
 tnoremap <C-C> <C-W><C-C>
 
 " ── Plugin configs ──
-execute 'source ' . s:config_dir . '/config/signify.vimrc'
+execute 'source ' . s:config_dir . '/config/git.vimrc'
 execute 'source ' . s:config_dir . '/config/asyncrun.vimrc'
 execute 'source ' . s:config_dir . '/config/gutentags.vimrc'
 execute 'source ' . s:config_dir . '/config/ale.vimrc'

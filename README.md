@@ -26,6 +26,82 @@ It is safe to run multiple times (all steps are idempotent). Run it again after
 | Go             | YCM + gopls      | ALE (gopls, golangci-lint)| goimports     |
 | Octave/Matlab  | —                | —                    | —             |
 
+## Keybindings
+
+Leader key: <kbd>Space</kbd>
+
+### Window / Terminal
+
+| Key | Action |
+|-----|--------|
+| `Ctrl-h/j/k/l` | Move to left/down/up/right window |
+| `<Space>w` | Open vertical terminal (65 cols) |
+| `<Esc>` (terminal) | Switch to Terminal-Normal mode |
+| `Ctrl-c` (terminal) | Send Ctrl-C to terminal |
+### File / Symbol / Buffer
+
+| Key | Action |
+|-----|--------|
+| `<Space>o` | FZF — fuzzy file finder |
+| `<Space>m` | LeaderF — most recently used files |
+| `<Space>f` | LeaderF — functions in current file |
+| `<Space>b` | LeaderF — open buffers |
+| `<Space>t` | LeaderF — project tags |
+| `<Space>l` | LeaderF — lines in current file |
+
+### Git
+
+| Key | Action | Plugin |
+|-----|--------|--------|
+| `<Space>g` | Git status (stage/unstage with `s`, diff with `dd`) | Fugitive |
+| `<Space>gb` | Git blame | Fugitive |
+| `<Space>gd` | Diff current file | Signify |
+| `<Space>gc` | Git commit | Fugitive |
+| `<Space>gp` | Git push | Fugitive |
+| `<Space>gl` | Git pull | Fugitive |
+| `<Space>gr` | Git log (current file) | Fugitive |
+| `<Space>gR` | Git log (all) | Fugitive |
+
+### Formatting
+
+| Key | File type | Action |
+|-----|-----------|--------|
+| `<Space>i` | C / C++ | clang-format (Google style) |
+| `<Space>i` | Python | yapf |
+| `<Space>i` | JavaScript / TS / JSX / TSX | Prettier |
+| `<Space>i` | CMake | cmake-format |
+| `<Space>i` | Other | Autoformat (auto-detect) |
+
+### Build / Run / Test (filetype-specific)
+
+| Key | C / C++ | Go | CMake |
+|-----|---------|-----|-------|
+| `<F5>` | — | `go run %` | Config + build |
+| `<F6>` | `make clean` | — | — |
+| `<F7>` | `make` | `go build ./...` | `cmake --build build` |
+| `<F11>` | `make test` | `go test ./...` | `ctest` |
+
+### Quickfix
+
+| Key | Action |
+|-----|--------|
+| `<F8>` | Next error / location |
+| `<F9>` | Previous error / location |
+| `<F10>` | Close quickfix window |
+
+### Insert Mode
+
+| Key | Action |
+|-----|--------|
+| `Ctrl-t` | Insert ISO 8601 timestamp |
+
+### Terminal Mode
+
+| Key | Action |
+|-----|--------|
+| `<Esc>` | Switch to Terminal-Normal mode |
+| `Ctrl-c` | Send Ctrl-C to terminal |
+
 ## Project structure
 
 ```
@@ -38,7 +114,7 @@ vim-config/
 │   ├── ale.vimrc             ← linting
 │   ├── ycm.vimrc             ← completion
 │   ├── airline.vimrc         ← statusline
-│   ├── signify.vimrc         ← git diff signs
+│   ├── git.vimrc             ← Git (fugitive + signify)
 │   ├── gutentags.vimrc       ← ctags management
 │   ├── leaderf.vimrc         ← file / tag / function navigation
 │   ├── fzf.vimrc             ← fuzzy finder
