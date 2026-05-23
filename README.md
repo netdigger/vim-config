@@ -97,6 +97,19 @@ Leader key: <kbd>Space</kbd>
 |-----|--------|
 | `Ctrl-t` | Insert ISO 8601 timestamp |
 
+### tmux
+
+Prefix: <kbd>Ctrl-j</kbd> (double-tap to pass through)
+
+| Key | Action |
+|-----|--------|
+| `C-j h/j/k/l` | Switch pane left/down/up/right |
+| `C-j e` | Synchronize input to all panes (on) |
+| `C-j E` | Synchronize input to all panes (off) |
+| `C-j C-r` | Reload tmux config |
+| `C-j [` | Enter copy mode (vi keys) |
+| `s` (copy mode) | Begin selection |
+| `c` (copy mode) | Copy selection and cancel |
 
 ## Project structure
 
