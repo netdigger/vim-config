@@ -166,5 +166,7 @@ dev-env/
 │   └── ftdetect/                 ← filetype detection
 │       └── octave.vim            ← Octave / Matlab
 └── tmux/                         ← tmux configuration
-    └── tmux.conf
+    ├── tmux.conf
+    ├── powerline-theme.sh
+    └── README.md
 ```
