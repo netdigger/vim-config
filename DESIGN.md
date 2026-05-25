@@ -21,7 +21,7 @@ dev-env/
 │   │   ├── gutentags.vimrc      # Ctags management
 │   │   ├── leaderf.vimrc        # Navigation/search
 │   │   ├── fzf.vimrc            # Fuzzy search
-│   │   ├── terminal.vimrc       # Terminal window
+│   │   ├── terminal.vimrc       # Terminal window + cursor shape
 │   │   ├── asyncrun.vimrc       # Async execution
 │   │   ├── echodoc.vimrc        # Command echo
 │   │   ├── autoformat.vimrc     # Code formatting
@@ -76,7 +76,7 @@ dev-env/
 vimrc (entry point)
   ├── plug_plugins.vimrc   ← must be sourced first, defines plugin list
   ├── [runtime settings]     ← global settings
-  ├── terminal.vimrc       ← function definitions (TermToggle)
+  ├── terminal.vimrc       ← terminal toggle + cursor shape
   ├── git.vimrc            ← keybindings
   ├── asyncrun.vimrc       ← shortcuts
   ├── gutentags.vimrc      ← ctags cache
