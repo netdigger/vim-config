@@ -10,6 +10,17 @@ execute 'source ' . s:config_dir . '/config/plug_plugins.vimrc'
 " ── Common settings ──
 syntax on
 filetype plugin indent on
+" termguicolors must be set BEFORE :colorscheme, otherwise gruvbox initializes
+" against the 256-color palette and looks bland.
+" t_8f/t_8b: tmux + xterm-256color terminfo lacks the Tc/RGB capability, so
+" without these explicit escape codes termguicolors is a no-op inside tmux.
+" See :help xterm-true-color
+if has('termguicolors')
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+endif
+set termguicolors
+set background=dark
 silent! colorscheme gruvbox
 set autowrite
 set autoindent
@@ -26,9 +37,9 @@ set hidden
 set ignorecase
 set smartcase
 set updatetime=300
-set termguicolors
-set wildoptions=pum
-set jumpoptions=stack
+" wildoptions=pum needs Vim >=8.2.4325; jumpoptions=stack needs >=8.2.1497.
+silent! set wildoptions=pum
+silent! set jumpoptions=stack
 
 highlight Pmenu ctermfg=white ctermbg=darkgray
 highlight PmenuSel ctermfg=white ctermbg=darkgreen

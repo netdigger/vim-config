@@ -5,7 +5,9 @@ call plug#begin('~/.vim/plugged')
 " gocode is deprecated, replaced by gopls (Go LSP)
 " Plug 'nsf/gocode', {'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh'}
 Plug 'netdigger/vim-octave'
-Plug 'ycm-core/YouCompleteMe'
+" Pinned: commits after this bump min Vim to 9.1.0016 and Python to 3.12.
+" This commit is the last that supports Ubuntu 22.04's Vim 8.2 + Python 3.10.
+Plug 'ycm-core/YouCompleteMe', { 'commit': 'b6e8c64d96b02d60b3751d6a51af7dc958054f8f' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive' "git

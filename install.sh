@@ -62,10 +62,22 @@ install_packages() {
     if command -v gopls &>/dev/null; then
         info "gopls already installed ($(gopls version 2>&1))"
     else
-        export PATH="$PATH:$HOME/go/bin"
+        # /usr/local/go/bin: official tarball install (Ubuntu 22.04 users often
+        # need this since the apt golang-go is 1.18). $HOME/go/bin: gopls itself.
+        export PATH="/usr/local/go/bin:$PATH:$HOME/go/bin"
         if command -v go &>/dev/null; then
-            go install golang.org/x/tools/gopls@latest 2>&1 || warn "gopls install failed"
-            info "gopls installed"
+            # gopls@latest requires Go >=1.21; Ubuntu 22.04 ships Go 1.18.
+            # Pin to the newest gopls compatible with the installed Go.
+            local go_ver go_major go_minor gopls_ref="latest"
+            go_ver=$(go version | awk '{print $3}' | sed 's/^go//')
+            go_major=${go_ver%%.*}
+            go_minor=$(echo "$go_ver" | cut -d. -f2)
+            if [ "$go_major" -lt 1 ] || { [ "$go_major" -eq 1 ] && [ "$go_minor" -lt 21 ]; }; then
+                gopls_ref="v0.13.2"
+                warn "Go $go_ver < 1.21 — pinning gopls@$gopls_ref (last compatible release)"
+            fi
+            go install "golang.org/x/tools/gopls@$gopls_ref" 2>&1 || warn "gopls install failed"
+            info "gopls installed ($gopls_ref)"
         else
             warn "Go not found — skipping gopls"
         fi
@@ -160,7 +172,24 @@ configure_vim() {
         info "YCM already compiled"
     elif [ -d "$VIM_HOME/plugged/YouCompleteMe" ]; then
         cd "$VIM_HOME/plugged/YouCompleteMe"
-        python3 install.py --clang-completer --ts-completer --go-completer 2>&1 || \
+        local ycm_args=(--clang-completer)
+        # --ts-completer needs Node >=18; Ubuntu 22.04 ships Node 12.
+        if command -v node &>/dev/null; then
+            local node_major
+            node_major=$(node --version | sed 's/^v\([0-9]*\).*/\1/')
+            if [ "$node_major" -ge 18 ]; then
+                ycm_args+=(--ts-completer)
+            else
+                warn "Node $(node --version) < 18 — skipping --ts-completer (install Node 18+ for JS/TS completion)"
+            fi
+        else
+            warn "Node not found — skipping --ts-completer"
+        fi
+        # NOTE: --go-completer is intentionally omitted. The pinned (Vim-8.2
+        # compatible) YCM bundles an old golang.org/x/tools that won't build
+        # on Go >=1.26, and we already install a standalone gopls above —
+        # which ALE/Vim can use for Go LSP without involving YCM's bundle.
+        python3 install.py "${ycm_args[@]}" 2>&1 || \
             warn "YCM compilation failed — try manually"
         info "YCM compiled"
     else
@@ -182,6 +211,14 @@ configure_vim() {
         info "prettier dependencies already installed"
     elif [ -d "$VIM_HOME/plugged/vim-prettier" ]; then
         cd "$VIM_HOME/plugged/vim-prettier"
+        # prettier needs Node >=14; warn on Ubuntu 22.04's default Node 12.
+        if command -v node &>/dev/null; then
+            local node_major
+            node_major=$(node --version | sed 's/^v\([0-9]*\).*/\1/')
+            if [ "$node_major" -lt 14 ]; then
+                warn "Node $(node --version) < 14 — prettier install will likely fail (install Node 14+)"
+            fi
+        fi
         if command -v yarn &>/dev/null; then
             yarn install 2>&1 || warn "yarn install failed"
         elif command -v npm &>/dev/null; then
