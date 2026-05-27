@@ -133,6 +133,13 @@ configure_vim() {
         done
     fi
 
+    # Fix stale ALE remote after repo moved from w0rp/ale → dense-analysis/ale
+    local ale_dir="$plugin_dir/ale"
+    if [ -d "$ale_dir" ] && git -C "$ale_dir" remote get-url origin 2>/dev/null | grep -q 'w0rp/ale'; then
+        warn "ALE remote points to old w0rp/ale — removing to re-clone from dense-analysis/ale"
+        rm -rf "$ale_dir"
+    fi
+
     vim +PlugUpgrade +PlugUpdate +qall 2>/dev/null || warn "Run :PlugUpdate in Vim manually"
     info "Plugins installed/updated"
 
