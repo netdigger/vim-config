@@ -99,6 +99,15 @@ Open Vim and run `:PlugInstall`, or:
 vim +PlugInstall +qall
 ```
 
+> **Troubleshooting:** If you see `Invalid URI: https://github.com/w0rp/ale.git`,
+> the ALE plugin directory has a stale git remote from before the repo moved
+> to `dense-analysis/ale`. Remove it manually:
+> ```
+> rm -rf ~/.vim/plugged/ale
+> ```
+> Then run `:PlugInstall` again. The install script (`install.sh`) handles this
+> automatically.
+
 ## YouCompleteMe
 
 ```
